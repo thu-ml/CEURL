@@ -4,10 +4,13 @@
 
 This is the Official implementation for "PEAC: Unsupervised Pre-training for Cross-Embodiment Reinforcement Learning" (NeurIPS 2024)
 
-## state-based DMC
+## State-based DMC
+
+### Installation
 
 The code is based on [URLB](https://github.com/rll-research/url_benchmark)
 
+You can create an anaconda environment and install all required dependencies by running
 ```sh
 conda create -n ceurl python=3.8
 conda activate ceurl
@@ -15,6 +18,9 @@ pip install -r requirements.txt
 pip install torch==1.8.0+cu111 torchvision==0.9.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
+### Instructions
+
+The simplest way to try PEAC in three embodiment distributions by running
 ```python3
 cd DMC_state
 chmod +x train_finetune.sh
