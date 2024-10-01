@@ -1,5 +1,5 @@
-./DMC_state/exp_local
-./DMC_state/pretrained_models
+DMC_state/exp_local
+DMC_state/pretrained_models
 
 __pycache__/
 **/__pycache__/

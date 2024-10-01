@@ -1,0 +1,16 @@
+hydra-core==1.1.0
+hydra-submitit-launcher==1.1.5
+termcolor==1.1.0
+wandb==0.11.1
+gym==0.26.2
+protobuf==3.20.0
+dm_env==1.6
+dm_control==1.0.14
+tensorboard==2.0.2
+numpy==1.19.2
+torchaudio==0.8.0
+pandas==1.3.0
+mujoco==2.3.7
+opencv-python
+imageio==2.9.0
+imageio-ffmpeg==0.4.4
