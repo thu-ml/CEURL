@@ -1,0 +1,75 @@
+defaults:
+  - configs/dreamer
+  - configs/agent: dreamer
+  - configs: ${configs}
+  - override hydra/launcher: submitit_local
+
+# mode
+reward_free: false
+# task settings
+#task: walker_stand
+task: none
+domain: walker_mass
+finetune_domain: walker_stand_mass
+# train settings
+num_train_frames: 100010
+num_seed_frames: 4000
+# eval
+eval_every_frames: 10000
+num_eval_episodes: 10
+# pretrained
+snapshot_ts: 100000
+snapshot_base_dir: ./pretrained_models
+custom_snap_dir: none
+# replay buffer
+replay_buffer_size: 1000000
+replay_buffer_num_workers: 4
+# misc
+seed: 1
+device: cuda
+save_video: false
+save_train_video: false
+save_eval_episodes: false
+use_tb: true
+use_wandb: true
+# experiment
+experiment: ft
+project_name: ???
+
+# log settings
+log_every_frames: 1000
+recon_every_frames: 100000000 # edit for debug 
+
+# planning
+mpc: false
+mpc_opt: { iterations : 12, num_samples : 512, num_elites : 64, mixture_coef : 0.05, min_std : 0.1, temperature : 0.5, momentum : 0.1, horizon : 5, use_value: true }
+
+# Pretrained network reuse
+init_critic: false
+init_actor: true
+init_task: 1.0
+
+# Fine-tuning ablation
+# we have saved the last model
+# save_ft_model: true
+save_ft_model: false
+
+# Dreamer FT
+grad_heads: [decoder, reward]
+reward_norm: {momentum: 1.0, scale: 1.0, eps: 1e-8}
+actor_ent: 1e-4
+
+hydra:
+  run:
+    dir: ./exp_local/${domain}/finetune_${finetune_domain}/${agent.name}/${snapshot_ts}/${now:%Y.%m.%d.%H%M%S}_${seed}
+  sweep:
+    dir: ./exp_sweep/${domain}/finetune_${finetune_domain}/${agent.name}/${snapshot_ts}/${now:%Y.%m.%d.%H%M%S}_${seed}_${experiment}
+    subdir: ${hydra.job.num}
+  launcher:
+    timeout_min: 4300
+    cpus_per_task: 10
+    gpus_per_node: 1
+    tasks_per_node: 1
+    mem_gb: 160
+    nodes: 1
+    submitit_folder: ./exp_sweep/${domain}/finetune_${finetune_domain}/${agent.name}/${snapshot_ts}/${now:%Y.%m.%d.%H%M%S}_${seed}_${experiment}/.slurm

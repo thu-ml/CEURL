@@ -1,0 +1,19 @@
+# @package agent
+_target_: agent.peac_lbs.PEAC_LBSAgent
+name: peac_lbs
+cfg: ???
+obs_space: ???
+act_spec: ???
+grad_heads: [decoder]
+#reward_norm: {momentum: 1.0, scale: 1.0, eps: 1e-8}
+#actor_ent: 1e-4
+reward_norm: {momentum: 0.95, scale: 1.0, eps: 1e-8}
+actor_ent: 0
+
+context_reward_norm: {momentum: 0.95, scale: 1.0, eps: 1e-8}
+#context_actor_ent: 0.1
+context_actor_ent: 1e-4
+
+num_init_frames: 4000
+
+task_number: 1
