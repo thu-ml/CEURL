@@ -1,10 +1,10 @@
 # CEURL
 
-[![arXiv](https://img.shields.io/badge/arXiv-2405.14073-b31b1b.svg)](https://arxiv.org/abs/2405.14073)
+[![arXiv](https://img.shields.io/badge/arXiv-2405.14073-b31b1b.svg)](https://arxiv.org/abs/2405.14073) [![Project Page](https://img.shields.io/badge/project%20page-blue)](https://yingchengyang.github.io/ceurl)
 
 This is the Official implementation for "PEAC: Unsupervised Pre-training for Cross-Embodiment Reinforcement Learning" (NeurIPS 2024)
 
-## State-based DMC
+## State-based DMC & Image-based DMC
 
 ### Installation
 
@@ -20,14 +20,24 @@ pip install torch==1.8.0+cu111 torchvision==0.9.0+cu111 -f https://download.pyto
 
 ### Instructions
 
-The simplest way to try PEAC in three embodiment distributions by running
-```python3
+The simplest way to try PEAC in three embodiment distributions of state-based DMC by running
+```sh
 cd DMC_state
 chmod +x train_finetune.sh
 
 ./train_finetune.sh peac walker_mass 0
 ./train_finetune.sh peac quadruped_mass 0
 ./train_finetune.sh peac quadruped_damping 0
+```
+
+The simplest way to try PEAC in three embodiment distributions of image-based DMC by running
+```sh
+cd DMC_image
+chmod +x train_finetune.sh
+
+./train_finetune.sh peac_lbs walker_mass 0
+./train_finetune.sh peac_lbs quadruped_mass 0
+./train_finetune.sh peac_lbs quadruped_damping 0
 ```
 
 ## Citation
