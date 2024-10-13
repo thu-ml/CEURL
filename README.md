@@ -1,6 +1,6 @@
 # CEURL
 
-[![arXiv](https://img.shields.io/badge/arXiv-2405.14073-b31b1b.svg)](https://arxiv.org/abs/2405.14073) [![Project Page](https://img.shields.io/badge/project%20page-blue)](https://yingchengyang.github.io/ceurl)
+[![arXiv](https://img.shields.io/badge/arXiv-2405.14073-b31b1b.svg)](https://arxiv.org/abs/2405.14073) [![Project Page](https://img.shields.io/badge/project-page-blue)](https://yingchengyang.github.io/ceurl)
 
 This is the Official implementation for "PEAC: Unsupervised Pre-training for Cross-Embodiment Reinforcement Learning" (NeurIPS 2024)
 
@@ -38,6 +38,10 @@ chmod +x train_finetune.sh
 ./train_finetune.sh peac_lbs walker_mass 0
 ./train_finetune.sh peac_lbs quadruped_mass 0
 ./train_finetune.sh peac_lbs quadruped_damping 0
+
+./train_finetune.sh peac_diayn walker_mass 0
+./train_finetune.sh peac_diayn quadruped_mass 0
+./train_finetune.sh peac_diayn quadruped_damping 0
 ```
 
 ## Citation
